@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOVAÉ — Modern Food & Drinks for Everyday Moments</title>
+<meta name="description" content="NOVAÉ crafts modern food and drinks for everyday moments — quality ingredients, thoughtful recipes, honest flavours.">
+
+<!-- ================================================================
+     EDITABLE CONTENT NOTE
+     Product data, prices, journal entries and site copy live inside
+     script.js under the SITE_DATA object for quick client hand-off.
+     Swap image URLs (search "IMAGE:" in this file) for real product
+     photography whenever it's ready.
+     ================================================================ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ TASTING RAIL (signature scroll element) ============ -->
+<div class="tasting-rail" aria-hidden="true">
+  <div class="tasting-rail__track">
+    <div class="tasting-rail__fill" id="railFill"></div>
+  </div>
+  <span class="tasting-rail__label" id="railLabel">Hero</span>
+</div>
+
+<!-- ============================ NAVBAR ============================ -->
+<header class="navbar" id="navbar">
+  <div class="navbar__inner">
+    <a href="#top" class="navbar__logo">NOVAÉ</a>
+
+    <nav class="navbar__nav" id="primaryNav">
+      <a href="#top">Home</a>
+      <a href="#collection">Shop</a>
+      <a href="#story">Our Story</a>
+      <a href="#ingredients">Ingredients</a>
+      <a href="#journal">Journal</a>
+    </nav>
+
+    <div class="navbar__actions">
+      <button class="icon-btn" id="searchToggle" aria-label="Open search">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="8" cy="8" r="6.2" stroke="currentColor" stroke-width="1.3"/><line x1="12.6" y1="12.6" x2="17" y2="17" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+      </button>
+      <button class="icon-btn" id="cartToggle" aria-label="Open cart">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 6h10l-1 8.5a1.5 1.5 0 0 1-1.5 1.3H6.5A1.5 1.5 0 0 1 5 14.5L4 6Z" stroke="currentColor" stroke-width="1.3"/><path d="M6.5 6V4.5a2.5 2.5 0 0 1 5 0V6" stroke="currentColor" stroke-width="1.3"/></svg>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <a href="#collection" class="btn btn--line btn--sm navbar__cta">Explore Collection</a>
+      <button class="hamburger" id="menuToggle" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- mobile nav -->
+  <div class="mobile-nav" id="mobileNav">
+    <nav>
+      <a href="#top">Home</a>
+      <a href="#collection">Shop</a>
+      <a href="#story">Our Story</a>
+      <a href="#ingredients">Ingredients</a>
+      <a href="#journal">Journal</a>
+    </nav>
+    <a href="#collection" class="btn btn--solid mobile-nav__cta">Explore Collection</a>
+  </div>
+</header>
+
+<!-- ============================ SEARCH OVERLAY ============================ -->
+<div class="search-overlay" id="searchOverlay">
+  <div class="search-overlay__inner">
+    <button class="search-overlay__close" id="searchClose" aria-label="Close search">&times;</button>
+    <span class="eyebrow">Search NOVAÉ</span>
+    <input type="text" id="searchInput" placeholder="Try “cold brew”, “cocoa”, “citrus”…" autocomplete="off">
+    <div class="search-results" id="searchResults"></div>
+  </div>
+</div>
+
+<!-- ============================ CART DRAWER ============================ -->
+<div class="cart-scrim" id="cartScrim"></div>
+<aside class="cart-drawer" id="cartDrawer">
+  <div class="cart-drawer__head">
+    <span class="eyebrow">Your Bag</span>
+    <button class="search-overlay__close" id="cartClose" aria-label="Close cart">&times;</button>
+  </div>
+  <div class="cart-drawer__items" id="cartItems">
+    <p class="cart-empty">Your bag is empty — for now.</p>
+  </div>
+  <div class="cart-drawer__foot">
+    <div class="cart-drawer__total">
+      <span>Subtotal</span>
+      <span id="cartTotal">₹0</span>
+    </div>
+    <button class="btn btn--solid cart-drawer__checkout" id="checkoutBtn">Checkout</button>
+    <p class="cart-drawer__note">Shipping and taxes calculated at checkout.</p>
+  </div>
+</aside>
+
+<main id="top">
+
+<!-- ============================ HERO ============================ -->
+<section class="hero">
+  <div class="hero__grid">
+    <div class="hero__copy">
+      <span class="eyebrow reveal" data-reveal>Modern Food &amp; Drinks</span>
+      <h1 class="hero__headline">
+        <span class="reveal" data-reveal>GOOD TASTE,</span>
+        <span class="reveal" data-reveal>REIMAGINED.</span>
+      </h1>
+      <p class="hero__sub reveal" data-reveal>Thoughtfully crafted food and drinks made for the moments that matter.</p>
+      <div class="hero__actions reveal" data-reveal>
+        <a href="#collection" class="btn btn--solid">Explore Collection</a>
+        <a href="#story" class="btn btn--ghost">Our Story</a>
+      </div>
+    </div>
+
+    <div class="hero__visual reveal" data-reveal>
+      <div class="hero__image-wrap">
+        <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=1400&q=80" alt="NOVAÉ signature drink, freshly poured" class="hero__image" loading="eager">
+      </div>
+      <div class="hero__floating-card">
+        <span class="hero__floating-label">Now Tasting</span>
+        <span class="hero__floating-name">Cold Brew Original</span>
+        <span class="hero__floating-price">₹249</span>
+      </div>
+    </div>
+  </div>
+
+  <button class="scroll-cue" id="scrollCue" aria-label="Scroll to explore">
+    <span>Scroll</span>
+    <span class="scroll-cue__line"><i></i></span>
+  </button>
+</section>
+
+<!-- ============================ COLLECTION ============================ -->
+<section class="section collection" id="collection">
+  <div class="section__head">
+    <span class="eyebrow reveal" data-reveal>Shop NOVAÉ</span>
+    <h2 class="section__title reveal" data-reveal>THE COLLECTION</h2>
+    <p class="section__desc reveal" data-reveal>Four everyday staples, made with unusual care.</p>
+  </div>
+
+  <div class="product-grid" id="productGrid"><!-- injected by script.js --></div>
+</section>
+
+<!-- ============================ FOOD + DRINKS SPLIT ============================ -->
+<section class="split" id="foodDrinks">
+  <a href="#collection" class="split__half split__half--food reveal" data-reveal data-filter="food">
+    <img src="https://images.unsplash.com/photo-1571115177098-24ec42ed204d?auto=format&fit=crop&w=1200&q=80" alt="NOVAÉ food, crafted for every craving" loading="lazy">
+    <div class="split__overlay">
+      <span class="eyebrow eyebrow--light">Food</span>
+      <h3>Crafted for every craving.</h3>
+      <span class="split__link">Shop Food <i>&rarr;</i></span>
+    </div>
+  </a>
+  <a href="#collection" class="split__half split__half--drinks reveal" data-reveal data-filter="drinks">
+    <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=1200&q=80" alt="NOVAÉ drinks, refreshment refined" loading="lazy">
+    <div class="split__overlay">
+      <span class="eyebrow eyebrow--light">Drinks</span>
+      <h3>Refreshment, refined.</h3>
+      <span class="split__link">Shop Drinks <i>&rarr;</i></span>
+    </div>
+  </a>
+</section>
+
+<!-- ============================ BRAND STORY ============================ -->
+<section class="section story" id="story">
+  <div class="story__grid">
+    <div class="story__image reveal" data-reveal>
+      <img src="https://images.unsplash.com/photo-1495214783159-3503fd1b572d?auto=format&fit=crop&w=1200&q=80" alt="Ingredients laid out for a NOVAÉ recipe" loading="lazy">
+    </div>
+    <div class="story__copy">
+      <span class="eyebrow reveal" data-reveal>Our Story</span>
+      <h2 class="section__title reveal" data-reveal>MADE WITH INTENTION.</h2>
+      <p class="reveal" data-reveal>NOVAÉ started with a simple question: why should everyday food and drinks feel like an afterthought? We build every recipe around quality ingredients, restrained sweetness and flavours that taste like themselves — nothing added just to shout the loudest.</p>
+      <p class="reveal" data-reveal>Every product is developed in small batches, tasted repeatedly, and only released when it earns its place in your day. No exaggerated claims — just food and drinks made properly.</p>
+
+      <ul class="fact-list">
+        <li class="reveal" data-reveal><span>01</span>Carefully sourced ingredients</li>
+        <li class="reveal" data-reveal><span>02</span>Thoughtful recipes</li>
+        <li class="reveal" data-reveal><span>03</span>Crafted with care</li>
+        <li class="reveal" data-reveal><span>04</span>Made for modern lifestyles</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ INGREDIENTS ============================ -->
+<section class="section ingredients" id="ingredients">
+  <div class="section__head">
+    <span class="eyebrow reveal" data-reveal>Quality, Explained</span>
+    <h2 class="section__title reveal" data-reveal>WHAT GOES IN MATTERS.</h2>
+  </div>
+
+  <div class="principles">
+    <div class="principle reveal" data-reveal>
+      <span class="principle__mark">Q</span>
+      <h3>Quality Ingredients</h3>
+      <p>We choose ingredients for how they taste and where they come from — not for shelf life.</p>
+    </div>
+    <div class="principle reveal" data-reveal>
+      <span class="principle__mark">R</span>
+      <h3>Thoughtful Recipes</h3>
+      <p>Every recipe goes through dozens of small revisions before it's allowed to carry the NOVAÉ name.</p>
+    </div>
+    <div class="principle reveal" data-reveal>
+      <span class="principle__mark">F</span>
+      <h3>Honest Flavours</h3>
+      <p>Real cocoa tastes like cocoa. Real citrus tastes like citrus. That's the whole idea.</p>
+    </div>
+    <div class="principle reveal" data-reveal>
+      <span class="principle__mark">C</span>
+      <h3>Crafted With Care</h3>
+      <p>Small batches, checked by hand, packed to arrive exactly as intended.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ PRODUCT SHOWCASE ============================ -->
+<section class="showcase reveal" data-reveal>
+  <div class="showcase__bg">
+    <img src="https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=1800&q=80" alt="Cold Brew Original poured over ice" loading="lazy">
+  </div>
+  <div class="showcase__content">
+    <span class="eyebrow eyebrow--light">Signature Pour</span>
+    <h2>Cold Brew Original</h2>
+    <p>Slow-steeped for eighteen hours, smoothed over time, poured cold. No shortcuts — just patience, in a glass.</p>
+    <div class="showcase__row">
+      <span class="showcase__price">₹249</span>
+      <a href="#collection" class="btn btn--solid">Shop Now</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ LIFESTYLE ============================ -->
+<section class="section lifestyle">
+  <div class="section__head">
+    <span class="eyebrow reveal" data-reveal>In Everyday Life</span>
+    <h2 class="section__title reveal" data-reveal>PART OF THE DAY, NOT APART FROM IT.</h2>
+  </div>
+  <div class="lifestyle-grid">
+    <div class="lifestyle-grid__item lifestyle-grid__item--tall reveal" data-reveal>
+      <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&q=80" alt="Morning coffee moment with NOVAÉ" loading="lazy">
+      <span>Morning ritual</span>
+    </div>
+    <div class="lifestyle-grid__item reveal" data-reveal>
+      <img src="https://images.unsplash.com/photo-1599490659213-e2b9527bd087?auto=format&fit=crop&w=900&q=80" alt="Snacking on NOVAÉ Sea Salt Crunch" loading="lazy">
+      <span>Snack, anywhere</span>
+    </div>
+    <div class="lifestyle-grid__item reveal" data-reveal>
+      <img src="https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?auto=format&fit=crop&w=900&q=80" alt="Friends sharing NOVAÉ food together" loading="lazy">
+      <span>Shared, always better</span>
+    </div>
+    <div class="lifestyle-grid__item lifestyle-grid__item--tall reveal" data-reveal>
+      <img src="https://images.unsplash.com/photo-1546173159-315724a31696?auto=format&fit=crop&w=900&q=80" alt="Evening drink, NOVAÉ Citrus Spark" loading="lazy">
+      <span>Evening wind-down</span>
+    </div>
+    <div class="lifestyle-grid__item reveal" data-reveal>
+      <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=900&q=80" alt="Minimal kitchen table setting" loading="lazy">
+      <span>Set the table</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ REVIEWS ============================ -->
+<section class="section reviews">
+  <div class="section__head">
+    <span class="eyebrow reveal" data-reveal>Told Honestly</span>
+    <h2 class="section__title reveal" data-reveal>WHAT PEOPLE ARE TASTING.</h2>
+  </div>
+
+  <div class="testimonial-slider reveal" data-reveal>
+    <div class="testimonial-track" id="testimonialTrack"><!-- injected by script.js --></div>
+    <div class="testimonial-controls">
+      <button id="testimonialPrev" aria-label="Previous review">&larr;</button>
+      <div class="testimonial-dots" id="testimonialDots"></div>
+      <button id="testimonialNext" aria-label="Next review">&rarr;</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ JOURNAL ============================ -->
+<section class="section journal" id="journal">
+  <div class="section__head">
+    <span class="eyebrow reveal" data-reveal>Reading</span>
+    <h2 class="section__title reveal" data-reveal>FROM THE JOURNAL</h2>
+  </div>
+  <div class="journal-grid" id="journalGrid"><!-- injected by script.js --></div>
+</section>
+
+<!-- ============================ NEWSLETTER ============================ -->
+<section class="newsletter">
+  <div class="newsletter__inner reveal" data-reveal>
+    <span class="eyebrow eyebrow--light">Stay Close</span>
+    <h2>STAY IN THE KNOW.</h2>
+    <p>New products, stories and little things worth tasting.</p>
+    <form class="newsletter__form" id="newsletterForm">
+      <input type="email" id="newsletterEmail" placeholder="Enter your email" required>
+      <button type="submit" class="btn btn--solid">Subscribe</button>
+    </form>
+    <p class="newsletter__success" id="newsletterSuccess">You're on the list — welcome to NOVAÉ.</p>
+  </div>
+</section>
+
+<!-- ============================ FINAL CTA ============================ -->
+<section class="final-cta">
+  <div class="final-cta__inner reveal" data-reveal>
+    <h2>TASTE SOMETHING<br>DIFFERENT.</h2>
+    <p>Discover the NOVAÉ collection.</p>
+    <a href="#collection" class="btn btn--outline-light">Explore NOVAÉ</a>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================ FOOTER ============================ -->
+<footer class="footer">
+  <div class="footer__top">
+    <div class="footer__brand">
+      <span class="navbar__logo">NOVAÉ</span>
+      <p>Modern food &amp; drinks for everyday moments.</p>
+    </div>
+
+    <div class="footer__col">
+      <h4>Navigate</h4>
+      <a href="#collection">Shop</a>
+      <a href="#story">Our Story</a>
+      <a href="#ingredients">Ingredients</a>
+      <a href="#journal">Journal</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <div class="footer__col">
+      <h4>Follow</h4>
+      <a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://wa.me/910000000000" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+
+    <div class="footer__col" id="contact">
+      <h4>Say Hello</h4>
+      <a href="mailto:hello@novae.example">hello@novae.example</a>
+      <a href="tel:+910000000000">+91 00000 00000</a>
+    </div>
+  </div>
+
+  <div class="footer__bottom">
+    <span>&copy; <span id="footerYear"></span> NOVAÉ. All rights reserved.</span>
+    <div class="footer__legal">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
